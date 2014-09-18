@@ -7,7 +7,7 @@ Zoidberg is intended for embedding a JRuby console in a Java web application
 which then could access arbitrary Java services (for testing purposes) using
 the Ruby programming language.
 
-As an example the the
+As an example the
 [yahoo-weather-java-api](https://github.com/fedy2/yahoo-weather-java-api)
 has been exposed to the console.
 
@@ -28,7 +28,6 @@ Configuration
 Configurations can be modified in `resources/config/application.properties`
 or by addig them as startup parameters:
 
-    # Server port
     server.port=9999
 
 License
