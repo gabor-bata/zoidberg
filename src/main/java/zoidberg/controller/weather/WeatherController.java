@@ -5,6 +5,8 @@ import static java.util.Collections.singletonMap;
 import static org.springframework.util.StringUtils.collectionToDelimitedString;
 
 import com.github.fedy2.weather.YahooWeatherService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,7 @@ import java.util.Map;
 
 @Controller
 public class WeatherController extends AbstractController {
+    private static final Logger LOG = LoggerFactory.getLogger(WeatherController.class);
     private static final String INIT_SCRIPT = collectionToDelimitedString(asList(
             "require 'java'",
             "java_import com.github.fedy2.weather.data.unit.DegreeUnit"
@@ -33,9 +36,9 @@ public class WeatherController extends AbstractController {
         try {
             weatherService = new YahooWeatherService();
         } catch (Exception e) {
-            // ignore
+            LOG.error("Could not instantiate weather service.", e);
         }
-        return singletonMap("weatherService", weatherService);
+        return singletonMap("weather_service", weatherService);
     }
 
     @Override
