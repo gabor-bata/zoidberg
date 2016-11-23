@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Zoidberg</title>
     <meta name="description" content="Why not Zoidberg?">
-    <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="css/zoidberg.css">
     <link rel="stylesheet" href="css/codemirror.css">
     <link rel="stylesheet" href="css/ambiance.css">
   </head>
@@ -13,9 +13,10 @@
       <div class="input-code-title">
         <img src="images/zoidberg.png" />
         <span class="title">Edit code</span>
-        <button id="send-button" type="button">Execute</button>
+        <button id="send-button" type="button">&#9654; Execute</button>
+        <button id="permalink-button" type="button">&#128279; Permalink</button>
         <span class="pulled-right">
-          <label for="input-code-example-select">Select example:</label>
+          <label for="input-code-example-select">Example:</label>
           <select id="input-code-example-select">
             <option value="" selected="selected">---</option>
             <option value="/examples/weather_forecast.rb">Weather forecast</option>
@@ -30,54 +31,7 @@
     <script src="js/codemirror-min.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/jquery.blockui.js"></script>
-    <script>
-      var inputEditor = CodeMirror.fromTextArea(document.getElementById("input-code"), {
-        mode: "text/x-ruby",
-        lineNumbers: true,
-        theme: "ambiance",
-        matchBrackets: true,
-        indentUnit: 2
-      });
-      var resultEditor = CodeMirror.fromTextArea(document.getElementById("result-code"), {
-        mode: "application/x-json",
-        lineNumbers: true,
-        theme: "ambiance",
-        matchBrackets: true,
-        indentUnit: 2,
-        readOnly: true
-      });
-      $("#send-button").on("click", function() {
-        $.blockUI();
-        $.ajax({
-          url: "/weather",
-          type: "POST",
-          data: { code: inputEditor.getValue() }
-        }).done(function(data) {
-          resultEditor.getDoc().setValue(JSON.stringify(data["result"], null, 2));
-        }).fail(function() {
-          resultEditor.getDoc().setValue("Failed to send ajax request.");
-        }).always(function() {
-          $.unblockUI();
-        });
-      });
-      var $exampleSelector = $("#input-code-example-select");
-      $exampleSelector.on("change", function() {
-        selectedScript = $(this).val();
-        if (selectedScript) {
-          $.blockUI();
-          $.ajax({
-            url: selectedScript
-          }).done(function(data) {
-            inputEditor.getDoc().setValue(data);
-          }).fail(function() {
-            resultEditor.getDoc().setValue("Failed to load example.");
-          }).always(function() {
-            $.unblockUI();
-          });
-        }
-      });
-      $exampleSelector.val("/examples/weather_forecast.rb");
-      $exampleSelector.trigger("change");
-    </script>
+    <script src="js/lz-string.min.js"></script>
+    <script src="js/zoidberg.js"></script>
   </body>
 </html>
