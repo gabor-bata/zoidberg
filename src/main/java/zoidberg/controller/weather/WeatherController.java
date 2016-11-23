@@ -38,7 +38,7 @@ public class WeatherController extends AbstractController {
         } catch (Exception e) {
             LOG.error("Could not instantiate weather service.", e);
         }
-        return singletonMap("weather_service", weatherService);
+        return singletonMap("@weather_service", weatherService);
     }
 
     @Override
