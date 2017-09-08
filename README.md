@@ -1,5 +1,4 @@
-Zoidberg
-========
+# Zoidberg [![Build Status](https://travis-ci.org/gabor-bata/zoidberg.svg)](https://travis-ci.org/gabor-bata/zoidberg)
 
 Overview
 --------
