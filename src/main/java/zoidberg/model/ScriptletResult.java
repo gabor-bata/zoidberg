@@ -1,13 +1,18 @@
 package zoidberg.model;
 
 public class ScriptletResult {
-    private final Object result;
+    private Object result;
 
-    public ScriptletResult(Object result) {
-        this.result = result;
+    private ScriptletResult() {
     }
 
     public Object getResult() {
         return result;
+    }
+
+    public static ScriptletResult create(Object result) {
+        ScriptletResult scriptletResult = new ScriptletResult();
+        scriptletResult.result = result;
+        return scriptletResult;
     }
 }

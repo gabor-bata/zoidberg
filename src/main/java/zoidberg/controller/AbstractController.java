@@ -39,7 +39,7 @@ public abstract class AbstractController {
             LOG.error("Error occurred while running the script.", e);
             result = "Error: " + e.getMessage();
         }
-        return new ScriptletResult(result);
+        return ScriptletResult.create(result);
     }
 
     private void putExposedObjects(ScriptingContainer scriptingContainer) {
