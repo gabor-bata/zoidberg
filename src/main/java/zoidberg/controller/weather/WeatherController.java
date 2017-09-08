@@ -25,8 +25,8 @@ public class WeatherController extends AbstractController {
     ), "\n");
 
     @RequestMapping("/weather")
-    public @ResponseBody
-    ScriptletResult handleRequest(@RequestParam(value = "code", required = true, defaultValue = "{ weather_service_available: !weatherService.nil? }") String code) {
+    @ResponseBody
+    public ScriptletResult handleRequest(@RequestParam(defaultValue = "{ weather_service_available: !@weather_service.nil? }") String code) {
         return runScriptlet(code);
     }
 

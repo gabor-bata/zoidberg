@@ -26,12 +26,13 @@ public abstract class AbstractController {
     }
 
     protected ScriptletResult runScriptlet(String code) {
-        Object result = null;
+        Object result;
         try {
-            ScriptingContainer scriptingContainer = new ScriptingContainer(LocalContextScope.THREADSAFE, LocalVariableBehavior.PERSISTENT);
+            ScriptingContainer scriptingContainer = new ScriptingContainer(LocalContextScope.THREADSAFE, LocalVariableBehavior.TRANSIENT);
             scriptingContainer.clear();
             putExposedObjects(scriptingContainer);
             runInitScriptlet(scriptingContainer);
+
             result = scriptingContainer.runScriptlet(code);
             scriptingContainer.terminate();
         } catch (Exception e) {
