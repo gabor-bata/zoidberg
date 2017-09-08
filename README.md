@@ -11,7 +11,7 @@ As an example the
 [yahoo-weather-java-api](https://github.com/fedy2/yahoo-weather-java-api)
 has been exposed to the console.
 
-![Zoidberg](https://raw.githubusercontent.com/gaborbata/zoidberg/master/resources/zoidberg-screenshot.png)
+![Zoidberg](https://raw.githubusercontent.com/gabor-bata/zoidberg/master/resources/zoidberg-screenshot.png)
 
 How to compile
 --------------
@@ -20,9 +20,9 @@ How to compile
 
 Usage
 -----
-Java 7 or later is required to start Zoidberg.
+Java 8 or later is required to start Zoidberg.
 
-* Start server: `mvn spring-boot:run` or `java -jar zoidberg-0.2-SNAPSHOT.jar`
+* Start server: `mvn spring-boot:run` or `java -jar zoidberg-0.3-SNAPSHOT.jar`
 * Access server: http://localhost:9999
 
 Configuration
@@ -34,7 +34,7 @@ or by addig them as startup parameters:
 
 License
 -------
-Copyright (c) 2016 Gabor Bata
+Copyright (c) 2017 Gabor Bata
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
