@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import zoidberg.controller.AbstractController;
@@ -24,7 +25,7 @@ public class WeatherController extends AbstractController {
             "java_import com.github.fedy2.weather.data.unit.DegreeUnit"
     ), "\n");
 
-    @RequestMapping("/weather")
+    @RequestMapping(value = "/weather", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public ScriptletResult handleRequest(@RequestParam(defaultValue = "{ weather_service_available: !@weather_service.nil? }") String code) {
         return runScriptlet(code);
